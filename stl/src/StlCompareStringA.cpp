@@ -35,13 +35,13 @@ extern "C" _CRTIMP2 int __cdecl __crtCompareStringA(_In_z_ LPCWSTR LocaleName, _
     // CompareString will compare past null terminator. Must find null terminator if in string before cchCountn chars.
     if (cchCount1 > 0) {
         cchCount1 = static_cast<int>(__strncnt(lpString1, cchCount1));
-    } else if (cchCount1 < -1) {
+    } else if (cchCount1 < -1) { // two strings don't have the same size.then we can't compare them
         return FALSE;
     }
 
     if (cchCount2 > 0) {
         cchCount2 = static_cast<int>(__strncnt(lpString2, cchCount2));
-    } else if (cchCount2 < -1) {
+    } else if (cchCount2 < -1) { // two strings don't have the same size.
         return FALSE;
     }
 
